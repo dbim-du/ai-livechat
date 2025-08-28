@@ -1,0 +1,9 @@
+# 忽略私钥文件 
+*.pem
+*.key
+*.cert 
+secrets/
+
+# 忽略环境变量文件 
+.env 
+.env.local 
