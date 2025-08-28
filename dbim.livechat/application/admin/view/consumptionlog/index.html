@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{:lang('商家消费记录')}</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/admin/style/admin.css" media="all">
+</head>
+<body>
+<style>
+    #infoTable td {
+        height: 50px;
+        vertical-align: middle;
+    }
+
+    #infoTable .layui-table-cell {
+        height: 40px;
+        vertical-align: middle;
+        line-height: 40px;
+    }
+
+    #infoTable .layui-table-cell .laytable-cell-1-0-4 img {
+        height: 38px;
+        width: 38px;
+        padding:1px;
+        border:1px solid #ccc;
+        border-radius:50%;
+    }
+</style>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">{:lang('商家名称')}</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="seller_name" placeholder="{:lang('请输入')}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">{:lang('支付类型')}</label>
+                    <div class="layui-input-block">
+                        <select name="xf_type">
+                            <option value="1">{:lang('金币')}</option>
+                            <option value="2">{:lang('Tokens')}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-back-search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <!-- <div style="padding-bottom: 10px;">
+                <button class="layui-btn layuiadmin-btn-admin" data-type="add"><i class="layui-icon">&#xe654;</i> {:lang('添加')}</button>
+            </div> -->
+            <div id="infoTable"> <table id="LAY-user-table" lay-filter="LAY-user-table"></table></div>
+
+            <script type="text/html" id="typeTpl">
+                {{#  if(d.type == 1){ }}
+                <button class="layui-btn layui-btn-xs" style="background-color: #1E9FFF; border-color: #1E9FFF;color: white;">金币</button>
+                {{#  } else { }}
+                <button class="layui-btn layui-btn-primary layui-btn-xs" style="background-color: #FBFBFB; border-color: #e6e6e6;color: #C9C9C9;">Tokens</button>
+                {{#  } }}
+            </script>
+
+        </div>
+    </div>
+</div>
+<script src="/static/admin/layui/layui.js"></script>
+<script src="/static/admin/layui/layui-common.js"></script>
+<script>
+    layui.use(['index', 'table'], function(){
+        var $ = layui.$
+            ,form = layui.form
+            ,table = layui.table;
+        // 监听搜索
+        form.on('submit(LAY-user-back-search)', function(data){
+            var field = data.field;
+            // 执行重载
+            table.reload('LAY-user-table', {
+                where: field
+            });
+        });
+    });
+    renderTable();
+    // 渲染表格
+    function renderTable() {
+        layui.use(['table', 'form'], function () {
+            var $ = layui.$
+                ,form = layui.form
+                ,table = layui.table;
+            table.render({
+                elem: "#LAY-user-table",
+                url: "/admin/consumptionlog/index",
+                cols: [
+                    [{
+                        field: "consumption_id",
+                        title: "{:lang('消费记录')}ID"
+                    }, {
+                        field: "order_code",
+                        title: "{:lang('订单编号')}",
+                    }, {
+                        field: "type",
+                        title: "{:lang('支付类型')}",
+                        templet: "#typeTpl",
+                    }, {
+                        field: "con_project",
+                        title: "{:lang('消费项目')}",
+                    }, {
+                        field: "seller_name",
+                        title: "{:lang('商家名称')}",
+                    }, {
+                        field: "consumption_num",
+                        title: "{:lang('消费数量')}",
+                    }, {
+                        field: "create_time",
+                        title: "{:lang('消费时间')}",
+                    }]
+                ],
+                page: !0,
+                limit: 20,
+                height: "full-220",
+                text: {
+                    none: '{:lang('暂无相关数据')}'
+                }
+            });
+            
+        });
+    }
+</script>
+</body>
+</html>

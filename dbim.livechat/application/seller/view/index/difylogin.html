@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    
+</head>
+<body>
+    
+</body>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+<!-- 预请求 dify 数据 -->
+<script>
+    loginDify();
+    // 1、dify 测试登录
+    function loginDify()
+    {
+        const email = getUrlParam('email');
+        $.ajax({
+            url: '/console/api/login', 
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({ 
+                email: email,
+                password: 'dbimlivechat2025',
+                language:'zh-Hans',
+                remember_me:true
+            }),
+            success: function(response) {
+                console.log(' 请求成功:', response);
+                //localStorage.setItem('access_token', response.data.access_token);
+                localStorage.setItem('refresh_token', response.data.refresh_token);
+                localStorage.setItem('console_token', response.data.access_token);
+            },
+            error: function(xhr, status, error) {
+                console.error(' 请求失败:', error);
+            }
+        });
+    }
+
+    // 获取单个参数
+    function getUrlParam(name) {
+        const params = new URLSearchParams(window.location.search); 
+        return params.get(name); 
+    }
+
+</script>
+
+</html>

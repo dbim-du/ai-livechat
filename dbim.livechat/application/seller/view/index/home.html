@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{:lang('多商户客服首页面板')}</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+<input type="hidden" id="posturl" value="{$sysconfigList[2]['web_url']}">
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                
+                <div class="layui-card-body layuiadmin-card-list" style="display: flex;">
+                    <div style="display: flex;">
+                        <img src="__STATIC__/common/images/kefu/jinbi.png" width="50px" height="50px"/>
+                        <p class="layuiadmin-big-font" style="font-size: 26px;">{$seller['goldcoinNum']}</p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <p class="layuiadmin-big-font" style="font-size: 26px;">Tokens：</p>
+                        <p class="layuiadmin-big-font" style="font-size: 26px;">{$seller['tokensNum']}</p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {if (session('merchantversion_Id')==1)}
+                        <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="component-form-element" data-type="add">{:lang('升级商业版')}</button>
+                        {else}
+                        <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="component-form-element" data-type="buy">{:lang('购买')}</button>
+                        {/if}
+                    </div>
+                    {if (session('merchantversion_Id')==1)}
+                    <div class="layui-card-header" style="border: none;line-height: 20px;overflow-y: auto;">
+                        {:lang('试用版用户使用本系统有以下限制:1、只能生成一个应用，并在系统内测试，不能关联客户席位。2、不可生成自己的知识库。3、免费tokens为50000个，不河购买新的tokens。建议升级商业版解锁全部功。')}
+                    </div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    {:lang('累计接待量')}
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$total_num}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    {:lang('今日接待量')}
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$today_num}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    {:lang('当前在线客服')}
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$online_kefu}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    {:lang('当前在线未咨询访客')}
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font">{$customer_num}</p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-sm8">
+                    <div class="layui-card">
+                        <div class="layui-card-header">{:lang('在线客服详情')}</div>
+                        <div class="layui-card-body">
+                            <table class="layui-table layuiadmin-page-table" lay-skin="line">
+                                <thead>
+                                <tr>
+                                    <th>{:lang('用户名')}</th>
+                                    <th>{:lang('最后登录时间')}</th>
+                                    <th>{:lang('状态')}</th>
+                                    <th>{:lang('服务人数')}</th>
+                                    <th>{:lang('累计服务人数')}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {if !empty($kefu)}
+                                {foreach name="kefu" item="vo"}
+                                <tr>
+                                    <td><span class="first">{$vo['kefu_name']}</span></td>
+                                    <td><i class="layui-icon layui-icon-log"> {$vo['last_login_time']}</i></td>
+                                    <td><span>{if $vo['online_status'] == 1}在线{else/}忙碌{/if}</span></td>
+                                    <td>{$vo['service_num']}</td>
+                                    <td>{$vo['total_service_num']}</td>
+                                </tr>
+                                {/foreach}
+                                {/if}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-sm4">
+                    <div class="layui-card">
+                        <div class="layui-card-header">{:lang('使用有效期')}</div>
+                        <div class="layui-card-body">
+                            <table class="layui-table layuiadmin-page-table" lay-skin="line">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>{:lang('日期')}</th>
+                                    <th>{:lang('天数')}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{:lang('有效期至')}</td>
+                                    <td>{$seller['valid_time']}</td>
+                                    <td>{:getValidDays($seller['valid_time'])}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    {:lang('最近15天接待情况')}
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row">
+                        <div class="layui-col-sm812">
+                            <div carousel-item id="LAY-index-pagetwo" style="width: 100%;height: 400px">
+                                <div><i class="layui-icon layui-icon-loading1 layadmin-loading"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <iframe id="myIframe" src="iframe-page.html"  style="display:none;width: 100%;height: 800px;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+ 
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script src="__STATIC__/common/js/jquery.min.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(["index", "echarts"], function () {
+        var myChart = echarts.init(document.getElementById('LAY-index-pagetwo'), layui.echartsTheme);
+        var colors = '#AA3130';
+        var option = {
+            color:['red'],
+            color:[colors],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { 
+                    type: 'line', 
+                    lineStyle: { 
+                        color: colors // 选中状态竖线颜色 
+                    } 
+                } 
+            },
+            xAxis: {
+                type: 'category',
+                data: {$fifteenDays|raw},
+                axisLine:{
+                    lineStyle:{
+                        color:colors
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                axisLine:{
+                    lineStyle:{
+                        color:colors
+                    }
+                }
+            },
+            series: [{
+                name: '{:lang('接待人数')}',
+                data: {$fifteenNum|raw},
+                type: 'line',
+                smooth: true
+            }]
+        };
+        myChart.setOption(option);
+
+
+        var $ = layui.$
+            ,form = layui.form
+            ,table = layui.table;
+        var active = {
+            add: function(){
+                layer.open({
+                    type: 2
+                    ,title: '{:lang('升级商业版')}'
+                    ,content: "{:url('index/shengji')}"
+                    ,area: ['450px', '340px']
+                });
+            },
+            buy: function(){
+                layer.open({
+                    type: 2
+                    ,title: '{:lang('购买Tokens')}'
+                    ,content: "{:url('index/buytokens')}"
+                    ,area: ['800px', '60%']
+                });
+            }
+        };
+        $('.layui-btn.layuiadmin-btn-admin').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+</script>
+
+<!-- 预请求 dify 数据 -->
+<script>
+    saveLocalStorage();
+    function saveLocalStorage() {
+        // 创建一个隐藏的 iframe 元素
+        const iframe = document.getElementById('myIframe'); 
+        iframe.src  = $('#posturl').val()+'/difylogin.html?email='+localStorage.getItem('email'); 
+        iframe.style.display  = 'none';
+        document.body.appendChild(iframe); 
+    }
+
+</script>
+</body>
+</html>

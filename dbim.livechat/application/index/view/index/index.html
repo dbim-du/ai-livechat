@@ -1,0 +1,406 @@
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="baidu-site-verification" content="LuFuQIGb35">
+    <link rel=" hortcut icon" href="/favicon.ico" mce_href="/favicon.ico " type="image/x-icon">
+    <link rel="stylesheet" href="__STATIC__/index/css/common.css">
+    <meta name="format-detection " content="telephone=no ">
+    <title>{:lang('HOME_TITLE')}</title>
+    <meta name="keywords" content="{:lang('HOME_KEYWORDS')}">
+    <meta name="description" content="{:lang('HOME_DESCRIPTION')}">
+    <link rel="stylesheet" href="__STATIC__/index/css/manual.css">
+    <style>
+        .home-reputation {
+            box-sizing: border-box;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 70px;
+            padding: 15px 0 15px 45px;
+            background-color: #f9f5e5;
+            font-size: 13px;
+            color: #83796e;
+            z-index: 20
+        }
+        .home-reputation.hide {
+            display: none
+        }
+        .home-reputation .close {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            cursor: pointer
+        }
+        .home-reputation .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap
+        }
+        .home-reputation .content > div {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 14px
+        }
+        .home-reputation .content > div:first-of-type {
+            margin-bottom: 5px
+        }
+        .home-reputation .content img {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            top: 3px;
+            left: -18px;
+            margin-right: 8px
+        }
+        .zc-navigation.active .zc-navigation-outer .zc-navigation-menu .clearfix li a{color:#fff}
+    </style>
+</head>
+<body>
+<div class="spec js-top-nav-outer">
+    <div class="zc-navigation">
+        <div class="zc-navigation-outer clearfix">
+            <div class="company-logo">
+                <a href="javascript:void(0);"></a>
+            </div>
+            <!-- <div class="lang-right">
+                <a class="lang-main-link">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="#039d9f" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z">
+                        </path>
+                    </svg>
+                    <span>简体中文</span>
+                </a>
+                <ul class="lang-menu" style="display: none;">
+                    <li><a href="javascript:void(0);" class="lang-link lang-link-active" lang="zh-ch">简体中文</a></li>
+                    <li><a href="javascript:void(0);" class="lang-link" lang="en-us">English</a></li>
+                </ul>
+            </div> -->
+            <div class="zc-navigation-button clearfix">
+                <div class="buttons-outer">
+                    <div class="cover">
+                        <a class="top-btn top-btn-register btn btn-register" style="position: relative;padding: 0 10px" href="/seller/index">{:lang('进入工作台')}
+                        </a>
+                    </div>
+                    
+                </div>
+
+
+            </div>
+            <div class="zc-navigation-menu">
+                <ul class="clearfix">
+                    <li class="js-top-list"><a href="#index_1">{:lang('首页')}</a></li>
+                    <li class="js-top-list"><a href="#index_2">{:lang('客服优势')}</a></li>
+                    <li class="js-top-list"><a href="#index_3">{:lang('AI智能')}</a></li>
+                    <li class="js-top-list"><a href="#index_4">{:lang('数据报表')}</a></li>
+                    <li class="js-top-list"><a href="#index_5">{:lang('技术保障')}</a></li>
+                    <li class="js-top-list"><a href="#index_6">{:lang('功能简介')}</a></li>
+                    <li class="js-top-list"><a href="/index/index/price">{:lang('套餐价格')}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="banner-outer" id="index_1">
+    <div class="banner-inner"><h1>{:lang('全渠道智能在线客服')}<br>{:lang('统一管理，智能服务')}</h1>
+        <div class="text">{:lang('提升在线客服效率，专注线上转化')}</div>
+        <div class="buttons">
+            <a href="/seller/index" class="btn">{:lang('免费试用')}{:config('seller.default_reg_day')}{:lang('天')}</a>
+        </div>
+    </div>
+</div>
+<div class="detail-item" id="index_2">
+    <h2>{:lang('把握客户咨询，商机转化率提升')}30%</h2>
+    <div class="detail-info expand" expand="">
+        <div class="ul-outer"><h5>全渠道覆盖</h5><h6 class="green">接待响应一站式</h6>
+            <ul>
+                <li>{:lang('桌面网站')}</li>
+                <li>App</li>
+                <li>{:lang('微信')}</li>
+                <li>{:lang('短信')}</li>
+            </ul>
+            <ul>
+                <li>{:lang('移动网站')}</li>
+                <li>{:lang('邮件')}</li>
+                <li>{:lang('微博')}</li>
+            </ul>
+        </div>
+        <div class="image-outer">
+            <img src="__STATIC__/index/picture/manual_sprite_01.png" style="top:30px;width: 560px; padding-left: 240px;">
+        </div>
+    </div>
+    <div class="detail-info expand" expand>
+        <img src="__STATIC__/index/picture/manual_sprite_01_01.png" style="top:30px;width: 560px; padding-left: 240px;">
+    </div>
+    <div class="detail-info expand" expand="">
+        <div class="ul-outer right"><h5>{:lang('精准用户画像')}</h5><h6 class="green">{:lang('决策更有智慧')}</h6>
+            <ul>
+                <li>{:lang('浏览轨迹')}</li>
+                <li>{:lang('客户信息')}</li>
+                <li>{:lang('情感分析')}</li>
+            </ul>
+            <ul>
+                <li>{:lang('舆情分析')}</li>
+                <li>{:lang('历史聊天记录')}</li>
+                <li class="spec">······</li>
+            </ul>
+        </div>
+        <div class="image-outer second">
+            <img src="__STATIC__/index/picture/manual_sprite_02.png" style="top:30px;width: 560px;padding-top: 40px;padding-left: 40px; ">
+        </div>
+    </div>
+    <div class="detail-info expand" expand>
+        <img src="__STATIC__/index/picture/manual_sprite_02_02.png" style="top:30px;width: 460px; padding-left: 240px;">
+    </div>
+    <div class="detail-info expand" expand>
+        <div class="ul-outer" style="margin-top:55px"><h5>{:lang('主动营销服务')}</h5><h6><span class="green">{:lang('专注线上转化')}</span></h6>
+            <ul style="width:100%">
+                <li>{:lang('自动弹窗邀请')}</li>
+                <li>{:lang('客服主动邀请会话')}</li>
+                <li>{:lang('常见问题引导')}</li>
+                <li>{:lang('热点推荐')}</li>
+                <li class="spec">······</li>
+            </ul>
+        </div>
+        <div class="image-outer third">
+            <img src="__STATIC__/index/picture/manual_sprite_03.png" style="top:30px;width: 560px; padding-left: 200px;">
+        </div>
+    </div>
+    <div class="href-wrap">
+        <a href="/seller/login/reg" target="_blank" class="one">{:lang('立即注册，亲自体验产品')}</a>
+    </div>
+</div>
+<div class="detail-item green" id="index_3">
+    <h2>{:lang('高效优质服务，成单率提升')}50%</h2>
+    <div class="list-outer">
+        <div class="list-item">
+            <div class="logo" data-name="phone">
+                <img src="__STATIC__/index/picture/manual_sprite_phone.png" >
+            </div>
+            <h4>{:lang('四种接待方式')}</h4><h4>{:lang('匹配不同业务接待场景')}</h4>
+            <ul>
+                <li>{:lang('机器人客服优先')}</li>
+                <li>{:lang('人工客服优先')}</li>
+                <li>{:lang('仅机器人客服')}</li>
+                <li>{:lang('仅人工客服')}</li>
+            </ul>
+        </div>
+        <div class="list-item">
+            <div class="logo" data-name="microphone">
+                <img src="__STATIC__/index/picture/manual_sprite_microphone.png" >
+            </div>
+            <h4>{:lang('声情并茂的富媒体沟通')}</h4><h4>{:lang('沟通效率翻倍')}</h4>
+            <ul>
+                <li>{:lang('图片')}/{:lang('文字')}</li>
+                <li>{:lang('语音')}/{:lang('视频')}</li>
+                <li>{:lang('表情')}</li>
+                <li>{:lang('商品链接')}</li>
+                <li>{:lang('文件传输')}</li>
+            </ul>
+        </div>
+        <div class="list-item">
+            <div class="logo" data-name="robot">
+                <img src="__STATIC__/index/picture/manual_sprite_robot.png" >
+            </div>
+            <h4>{:lang('机器人客服接待')}/{:lang('辅助人工')}</h4><h4>{:lang('客户服务秒级响应')}</h4>
+            <ul>
+                <li>{:lang('机器人客服快速接待')}</li>
+                <li>{:lang('机器人客服辅助人工')}</li>
+                <li>{:lang('快速检索知识库')}</li>
+                <li>{:lang('智能监控')}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="href-wrap sky-blue">
+        <a href="/seller/login/reg" target="_blank" class="one">{:lang('立即注册，亲自体验产品')}</a>
+    </div>
+</div>
+<div class="detail-item" style="text-align: center; position: absolute; z-index: -100;margin-top: -440px;">
+    <img src="__STATIC__/index/picture/bg.png">
+</div>
+<div class="detail-item" id="index_4">
+    <h2>{:lang('强大统计报表，业务数据完美升华')}</h2>
+    <div class="detail-info expand" expand="" style="text-align: center;">
+        <img src="__STATIC__/index/picture/manual_sprite_04.png" style="width:90%;">
+    </div>
+    <div class="href-wrap">
+        <a href="/seller/login/reg" target="_blank" class="one">{:lang('立即注册，亲自体验产品')}</a>
+    </div>
+</div>
+<div class="detail-item gray" id="index_5">
+    <h2>{:lang('多重技术保障，保证稳定不丢消息')}</h2>
+    <div class="ensure-banner-outer expand" expand="">
+        <div class="logo-outer js-logo-outer active">
+            <div class="logo-inner">
+                <div class="logo-tips">{:lang('更适合移动时代的')}<br>{:lang('复杂网络环境判断')}</div>
+            </div>
+        </div>
+        <div class="logo-outer js-logo-outer">
+            <div class="logo-inner">
+                <div class="logo-tips">{:lang('两地三中心备灾方案')}</div>
+            </div>
+        </div>
+        <div class="logo-outer js-logo-outer">
+            <div class="logo-inner right">
+                <div class="logo-tips right">{:lang('大数据')}<br>{:lang('集群部署')}</div>
+            </div>
+        </div>
+        <div class="logo-outer js-logo-outer">
+            <div class="logo-inner">
+                <div class="logo-tips">{:lang('动态DNS持续重连')}<br>{:lang('直至到达')}</div>
+            </div>
+        </div>
+        <div class="logo-outer js-logo-outer">
+            <div class="logo-inner right">
+                <div class="logo-tips right">{:lang('全面的SLA保障体系')}<br>{:lang('及赔付方案')}</div>
+            </div>
+        </div>
+        <div class="logo-outer spec js-logo-outer">
+            <div class="logo-inner right">
+                <div class="logo-tips right">{:lang('长连接技术')}</div>
+            </div>
+        </div>
+        <div class="image-outer" style="text-align: center;">
+            <img src="__STATIC__/index/picture/manual_sprite_05.png" style="top:30px;width: 90%;">
+        </div>
+    </div>
+    <div class="href-wrap">
+        <a href="/seller/login/reg" target="_blank" class="one">{:lang('立即注册，亲自体验产品')}</a>
+    </div>
+</div>
+<div class="detail-item" style="position:relative;" id="index_6">
+    <h2>{:lang('更多功能列表')}</h2>
+    <div class="grid-outer">
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('多渠道接入')}</div>
+            <div class="desc">｛:lang('DBiM AI智能客服支持桌面网站、移动网站、App、微信、微博、短信等多种渠道接入，客服可以在一个后台接待所有渠道来访的用户。')｝</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('多种接待方式')}</div>
+            <div class="desc">{:lang('企业可根据自身的业务场景来决定采用人工客服还是机器人客服的方式进行接待，也可以配置为人工客服优先接待或智能机器人客服优先接待。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('客服技能组分类')}</div>
+            <div class="desc">{:lang('企业可根据自身的业务需要配置不同的技能组，并配置相关技能组下的客服人员，访客可以根据自身的业务咨询需求，选择更有针对性解决的客服组进行服务。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('富媒体沟通')}</div>
+            <div class="desc">{:lang('除了纯文字，客服还可以通过表情、图片、富文本、超链接等多种方式回答问题，让用户和客服之间的沟通不再单一。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('会话自动应答')}</div>
+            <div class="desc">{:lang('客户可对一些特定的场景，例如客服不在线、超时无响应等场景，进行一些自动应答的偏好设置。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('自动弹框邀请')}</div>
+            <div class="desc">{:lang('用户浏览网站的过程中，系统可自动弹窗邀请用户加入咨询。对于有咨询意向的用户而言，减少了其发起咨询的操作，大幅提升用户体验。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('客服主动邀请会话')}</div>
+            <div class="desc">{:lang('客服可以选择对正在排队或正在浏览网站的用户发起主动会话邀请，主动拉近用户距离，并进一步促进了订单的转化。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('聊天信息同步')}</div>
+            <div class="desc">{:lang('人工客服和用户建立新的会话后，可看到用户曾经和其他人工客服或机器人客服的聊天记录，帮助客服更好地定位用户问题，减少信息断层。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('用户身份画像')}</div>
+            <div class="desc">｛:lang('客服在接待用户时可看到用户的基础信息，包括昵称、联系方式、订单记录等。若企业有需要，也可以把自己企业的CRM系统信息对接至DBiM AI智能客服系统。')｝</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('用户来源')}</div>
+            <div class="desc">{:lang('可根据客户来源渠道、搜索词、受访页面、着陆页面等多个维度查询访客的相关来源信息，更好帮助企业分析线索的投放情况。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('用户浏览轨迹')}</div>
+            <div class="desc">{:lang('客服在接待用户时可查看用户在各个页面的访问轨迹，从而更好地了解到用户的真实需求，减少沟通成本的同时促进订单转化提升。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('用户访问分析')}</div>
+            <div class="desc">{:lang('管理者可通过会话和访客两个维度查询各个渠道的用户来访数据，并可以选择不同参数来自定义查询报表和导出报表。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('智能质检')}</div>
+            <div class="desc">{:lang('企业可对客服的日常工作进行质检，不仅如此，还可以为质检项目配置质检评分标准以及质检标签。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('客服工作量分析')}</div>
+            <div class="desc">{:lang('企业管理员不仅可以对客服的整体工作情况进行直观地查看以及统计分析，而且可以针对性地查看具体单个客服的接待情况。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('会话记录')}</div>
+            <div class="desc">{:lang('管理员可以通过不同条件自定义查询人工客服或机器人客服的接待情况，查看完整会话记录。据此，企业可以更好地进行服务质量监控。')}</div>
+        </div>
+        <div class="grid-column">
+            <div class="logo-outer"></div>
+            <div class="text">{:lang('客户满意度评价')}</div>
+            <div class="desc">{:lang('访客不仅可以在会话结束后对人工客服的工作进行满意度评价，而且可以在评价时选择相应的评价标签。')}</div>
+        </div>
+    </div>
+    <div class="seperator-line"></div>
+    <div class="href-wrap">
+        <a href="/seller/login/reg" target="_blank" class="one">{:lang('立即注册，亲自体验产品')}</a>
+    </div>
+</div>
+<div class="common-summary" style="color:#939393;">
+    <div>
+        <span id="text4">Copyright © 2015-{:date('Y')} dbim.com {:lang('版权所有')}</span>
+    </div>
+</div>
+<div class="home-reputation">
+    <div class="content">
+        <div>
+            <img src="__STATIC__/index/images/warning-a47e094a16.png" alt="">
+            <span>{:lang('使用DBiM AI智能客服产品期间，不得危害国家安全、泄露国家秘密，不得侵犯国家社会集体和公民的合法权益。')}</span>
+        </div>
+        <div>{:lang('DBiM AI智能客服产品禁止用于含有木马、病毒、色情、赌博、诈骗等违法违规业务。一经发现，DBiM AI智能客服有权立即停止服务，并协助相关行政执法机关进行清查。')}</div>
+    </div>
+    <img src="__STATIC__/index/images/close-20dcd1ad6c.png" alt="" class="close" id="homeReputationClose">
+</div>
+<script src="__STATIC__/index/js/jquery.min.js"></script>
+<script src="__STATIC__/index/js/jquery.cookie.js"></script>
+<script src="__STATIC__/index/js/lang.js"></script>
+<script>
+    $(window).scroll(function(){
+        if($(window).scrollTop() > 0){
+            $(".zc-navigation").addClass('active');
+        }
+        if($(window).scrollTop() < 10){
+            $(".zc-navigation").removeClass('active');
+        }
+    });
+    $(".js-logo-outer").mouseover(function(){
+        $(".js-logo-outer").removeClass("active");
+        $(this).addClass('active');
+    });
+
+
+    // 声名部分 关闭按钮绑定事件
+    $('#homeReputationClose').on('click', function (ev) {
+        ev.stopPropagation();
+        $('.home-reputation').addClass('hide');
+    });
+</script>
+</body>
+</html>

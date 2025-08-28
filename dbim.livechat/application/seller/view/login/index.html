@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录-DBiM AI智能客服系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .main-body {top:50%;left:50%;position:absolute;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%);overflow:hidden;}
+        .login-main .login-bottom .center .item input {display:inline-block;width:227px;height:22px;padding:0;position:absolute;border:0;outline:0;font-size:14px;letter-spacing:0;}
+        .login-main .login-bottom .center .item .icon-1 {background:url(/static/admin/images/icon-login-email.png); background-size:cover;}
+        .login-main .login-bottom .center .item .icon-2 {background:url(/static/admin/images/icon-login-user.png); background-size:cover;}
+        .login-main .login-bottom .center .item .icon-3 {background:url(/static/admin/images/icon-login-pwd.png); background-size:cover;}
+        .login-main .login-bottom .center .item .icon-4 {background:url(/static/admin/images/icon-login-code.png); background-size:cover;}
+        .login-main .login-bottom .center .item .icon-5 {background:url(/static/admin/images/icon-login.png) no-repeat -55px -43px;}
+        .login-main .login-bottom .center .item .icon-6 {background:url(/static/admin/images/icon-login.png) no-repeat 0 -93px;position:absolute;right:-10px;margin-top:8px;cursor:pointer;}
+        .login-main .login-bottom .tip .icon-check {margin:0 7px 0 0;width:14px;height:14px;border:none;background:url(/static/admin/images/icon-login.png) no-repeat -111px -48px;}
+        .login-main .login-bottom .center .item .icon {display:inline-block;width:20px;height:22px;}
+        .login-main .login-bottom .center .item {width:288px;height:35px;border-bottom:1px solid #dae1e6;margin-bottom:35px;}
+        .login-main {width:428px;position:relative;float:left;}
+        .login-main .login-top {height:117px;background-color:white;font-family:SourceHanSansCN-Regular;font-size:20px;font-weight:400;font-stretch:normal;letter-spacing:0;color:#333333;line-height:117px;text-align:center;overflow:hidden;-webkit-transform:rotate(0);-moz-transform:rotate(0);-ms-transform:rotate(0);-o-transform:rotate(0);transform:rotate(0);font-family: Source Han Sans CN;font-weight: bold;}
+        .login-main .login-top .bg1 {display:inline-block;width:74px;height:74px;background:#fff;opacity:.1;border-radius:0 74px 0 0;position:absolute;left:0;top:43px;}
+        .login-main .login-top .bg2 {display:inline-block;width:94px;height:94px;background:#fff;opacity:.1;border-radius:50%;position:absolute;right:-16px;top:-16px;}
+        .login-main .login-bottom {width:428px;background:#fff;padding-bottom:53px;}
+        .login-main .login-bottom .center {width:288px;margin:0 auto;padding-top:40px;position:relative;}
+        .login-main .login-bottom .tip {clear:both;height:16px;line-height:16px;width:288px;margin:0 auto;}
+        body {background: url(/static/seller/images/background_new.jpg) no-repeat;position:static;background-size: cover;}
+        input::-webkit-input-placeholder {color:#a6aebf;}
+        input::-moz-placeholder {/* Mozilla Firefox 19+ */            color:#a6aebf;}
+        input:-moz-placeholder {/* Mozilla Firefox 4 to 18 */            color:#a6aebf;}
+        input:-ms-input-placeholder {/* Internet Explorer 10-11 */            color:#a6aebf;}
+        input:-webkit-autofill {/* 取消Chrome记住密码的背景颜色 */            -webkit-box-shadow:0 0 0 1000px white inset !important;}
+        html {height:100%;}
+        .login-main .login-bottom .tip {clear:both;height:16px;line-height:16px;width:288px;margin:0 auto;}
+        .login-main .login-bottom .tip .login-tip {font-family:MicrosoftYaHei;font-size:12px;font-weight:400;font-stretch:normal;letter-spacing:0;color:#9abcda;cursor:pointer;}
+        .login-main .login-bottom .tip .forget-password {font-stretch:normal;letter-spacing:0;color:#1391ff;text-decoration:none;position:absolute;right:62px;}
+        .login-main .login-bottom .login-btn {width:288px;height:40px;margin:24px auto 0;text-align:center;line-height:40px;color:#fff;font-size:14px;letter-spacing:0;cursor:pointer;border:none;background: linear-gradient(90deg, #FD9283 0%, #CA2E2F 100%);}
+        .login-main .login-bottom .center .item .validateImg {position:absolute;right:1px;cursor:pointer;height:36px;border:1px solid #e6e6e6;}
+        .footer {left:0;bottom:0;color:#fff;width:100%;position:absolute;text-align:center;line-height:30px;padding-bottom:10px;text-shadow:#000 0.1em 0.1em 0.1em;font-size:14px;}
+        .padding-5 {padding:5px !important;}
+        .footer a,.footer span {color:#fff;}
+        @media screen and (max-width:428px) {.login-main {width:360px !important;}
+            .login-main .login-top {width:360px !important;}
+            .login-main .login-bottom {width:360px !important;}
+        }
+        .sms-div{
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .layui-btn-lg {
+            height: 44px;
+            line-height: 44px;
+            padding: 0 25px;
+            font-size: 16px;
+        }
+        .layui-btn {
+            display: inline-block;
+            vertical-align: middle;
+            height: 38px;
+            line-height: 38px;
+            border: 1px solid transparent;
+            padding: 0 18px;
+            background-color: #009688;
+            color: #fff;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+        .v-code-input{
+            width: 100px !important;
+            margin-left: 40px;
+        }
+        .clickTrue {width:100px; margin:auto; float:left;color:black;text-decoration:none; color:black;font-weight: bold;font-size: 20px !important;}
+        .clickFalse {width:100px; margin:auto; float:left; color:#999999;font-weight: initial;font-size: 15px !important;}
+        .spanLable {color:#5F6266;display:inline-block;font-size:14px;vertical-align: top;}
+
+        .layui-form-checkbox{
+            margin: 0 !important;
+            width: 200px;
+        }
+        .layui-form-checkbox span{
+            white-space: break-spaces !important;
+            font-size: 12px !important;
+        }
+        /* 选择紧接在 id = layui_form_checkbox_xieyi_span 元素后的 div 元素 */ 
+        #layui_form_checkbox_xieyi_span + div {
+            width: auto !important;
+            >span{
+                font-size: 12px;
+                color: #999999;
+            }
+        }
+        
+        
+    </style>
+</head>
+<body>
+<div class="main-body">
+    <div style="width: 1100px;">
+        <div style="width: 672px; float:left; background-color:white;display:flex;">
+            <image src="/static/seller/images/seller_login01.png" style="width:100%;height:570px;"></image>
+        </div>
+        <div style="width: 428px; float:left;">
+            
+        
+    <div class="login-main">
+        <div class="login-top">
+            <div style=" display:inline-block;">
+                <div class="clickTrue" id="login_title">
+                    <a href="#" onclick="login_register('login')" style="color:black;text-decoration:none;">登录</a>
+                    <div id="login_title_line" style="width: 25px; background-color: red; margin-top: -50px;height: 6px;margin-left:35%;"></div>
+                </div> 
+                <div class="clickFalse" id="register_title">
+                    <a href="#" onclick="login_register('register')" style="color:black;text-decoration:none;">注册</a>
+                    <div id="register_title_line" style="width: 25px; background-color: red; margin-top: -50px;height: 6px;margin-left:35%; display:none;"></div>
+                </div> 
+            </div>
+             
+            
+        </div>
+
+        <!-- 登录 -->
+        <form class="layui-form login-bottom" id="login_title_form" style="height:400px;">
+            <div class="center">
+                <div class="item">
+                    <span class="icon icon-1"></span>
+                    <span class="spanLable"> 邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
+                    <input type="text" id="email" name="email" lay-verify="required"  placeholder="请输入登录邮箱" maxlength="24"/>
+                </div>
+
+                <div class="item" style="margin-bottom: 10px !important;">
+                    <span class="icon icon-3"></span>
+                    <span class="spanLable"> 密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+                    <input type="password" id="password" name="password" lay-verify="required"  placeholder="请输入密码" maxlength="20">
+                    <span class="bind-password icon icon-4"></span>
+                </div>
+
+                <!-- <div id="validatePanel" class="item" style="width: 137px;">
+                    <input type="text" name="captcha" placeholder="请输入验证码" maxlength="4">
+                    <img id="refreshCaptcha" class="validateImg"  src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?t='+Math.random();" title="不清楚? 点击换一个">
+                </div> -->
+
+                <div class="layui-form-item" pane>
+                    <div class="">
+                        <input type="checkbox" id="jizhumima" name="jizhumima" lay-skin="primary" title="记住密码" style="margin: 0 !important; width: 200px;">
+                        <a href="#" onclick="wangjimima()">忘记密码？</a>
+                    </div>
+                    
+                </div>
+
+            </div>
+            <div class="layui-form-item" style="text-align:center; width:100%;height:80px;margin:0px;">
+                <button class="login-btn" lay-submit="" lay-filter="login">立即登录</button>
+            </div>
+            
+            
+        </form>
+        
+        <!-- 注册 -->
+        <form class="layui-form login-bottom" id="register_title_form" style="height:400px;display:none;">
+            <div class="center">
+                <div class="item">
+                    <span class="icon icon-2"></span>
+                    <span class="spanLable"> 用 户 名：</span>
+                    <input type="text" id="register_name" name="register_name" lay-verify="required"  placeholder="请输入商户名称" maxlength="24"/>
+                </div>
+                <div class="item">
+                    <span class="icon icon-1"></span>
+                    <span class="spanLable"> 邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
+                    <input type="text" id="register_email" name="register_email" lay-verify="required"  placeholder="请输入登录邮箱" maxlength="24"/>
+                    
+                    <button id="send_btn" class="login-btn" style="width: 50px; height: 25px; line-height: 25px;margin:auto;position:fixed;right: 70px; margin-top: -4px;font-size:10px;">发送</button>
+                </div>
+                <div class="item">
+                    <span class="icon icon-4"></span>
+                    <span class="spanLable"> 验 证 码：</span>
+                    <input type="text" id="register_sms_captcha" name="register_sms_captcha" lay-verify="required"  placeholder="请输入验证码" maxlength="24"/>
+                </div>
+                <div class="item">
+                    <span class="icon icon-3"></span>
+                    <span class="spanLable"> 密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+                    <input type="password" id="register_password" name="register_password" lay-verify="required"  placeholder="请输入密码" maxlength="20">
+                    <span class="bind-password icon icon-4"></span>
+                </div>
+            </div>
+            <div class="layui-form-item" style="text-align:center; width:100%;height:80px;margin:0px; margin-top: -20px;">
+                <button class="login-btn" lay-submit="" lay-filter="register">注册</button>
+            </div>
+
+            <div class="center" style="padding: 0 !important;">
+                <div class="layui-form-item" pane>
+                    <div class="">
+                        <input class="xieyi" id="layui_form_checkbox_xieyi_span" type="checkbox" name="xieyi" lay-skin="primary" style="margin: 0 !important; width: 20px !important;" title="注册即表示您已阅读并同意遵守“DBiM 用户协议”和“DBiM 隐私政策”">
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    
+    </div>
+    </div>
+    
+</div>
+<script type="text/javascript" src="__STATIC__/layui/layui.js"></script>
+<script src="__STATIC__/common/js/jquery.min.js"></script>
+<script>
+
+    function saveInput(email,password,jizhumima_)
+    {
+        if (jizhumima_) {
+            
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+            localStorage.setItem('jizhumima', 'true');
+         
+        }else{
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            localStorage.removeItem('jizhumima');
+        }
+        
+    }
+
+    layui.use(['form','jquery','md5'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer;
+        
+        // 登录
+        form.on('submit(login)', function(data) {
+            if (data.field.email.trim() == '') {
+                layer.msg('登录邮箱不能为空');
+                return false;
+            }
+            if (data.field.password.trim() == '') {
+                layer.msg('密码不能为空');
+                return false;
+            }
+
+            layer.load();
+            $.ajax({
+                type: "POST",
+                url: "/seller/login/doLogin",
+                data: data.field,
+                success: function (res) {
+                    layer.closeAll('loading');
+                    if (res.code==0){
+                        layer.msg(res.msg,{icon:1,time:1000},function () {
+                            const jizhumima_ = document.getElementById('jizhumima');
+                            
+                            // saveInput(data.field.email, data.field.password, jizhumima_.checked);
+                            saveInput(data.field.email, data.field.password, true);
+
+                            // 注册 dify(如果历史用户 没有注册，就注册一个)
+                            regisertDify(data.field.email,data.field.email,res.data);
+                            //location.href = res.data;
+                        })
+                    } else {
+                        layer.msg(res.msg,{icon:2,time:1000},function () {
+                            initCode();
+                        })
+                    }
+                }
+            });
+
+            return false;
+        });
+
+        function initCode() {
+            $('#refreshCaptcha').attr("src","{:captcha_src()}?t=" + Math.random());
+        }
+
+        // 登录过期的时候，跳出ifram框架
+        if (top.location != self.location) top.location = self.location;
+
+        $('.bind-password').on('click', function () {
+            if ($(this).hasClass('icon-5')) {
+                $(this).removeClass('icon-5');
+                $("input[name='password']").attr('type', 'password');
+            } else {
+                $(this).addClass('icon-5');
+                $("input[name='password']").attr('type', 'text');
+            }
+        });
+        
+        
+        // 注册
+        form.on('submit(register)', function(data) {
+            if (data.field.register_name.trim() == '') {
+                layer.msg('用户名不能为空');
+                return false;
+            }
+             if (data.field.register_email.trim() == '') {
+                layer.msg('邮箱不能为空');
+                return false;
+            }
+            if (data.field.register_sms_captcha.trim() == '') {
+                layer.msg('验证码不能为空');
+                return false;
+            }
+           if (data.field.register_password.trim() == '') {
+                layer.msg('密码不能为空');
+                return false;
+            }
+            
+            
+            //data.field.register_password =$.md5(data.field.register_password);
+
+            const xieyi = document.getElementById('layui_form_checkbox_xieyi_span');
+            if(!xieyi.checked)
+            {
+                layer.msg('请勾选注册协议');
+                return false;
+            }
+            
+            // 显示加载层，并获取加载层的索引 
+            var loadIndex = layer.load();
+            $.ajax({
+                type: "POST",
+                url: "/seller/login/reg",
+                data: data.field,
+                success: function (res) {
+                    layer.closeAll('loading');
+                    if (res.code==0){
+                        layer.msg(res.msg,{icon:1,time:1000},function () {
+                            layer.msg('注册成功');
+                            localStorage.setItem('email',data.field.register_email);
+                            // 注册 dify
+                            regisertDify(data.field.register_name,data.field.register_email,res.data);
+                            //location.href = res.data;
+                        })
+                    } else {
+                        layer.msg(res.msg,{icon:2,time:1000},function () {
+                            initCode();
+                        })
+                    }
+                }
+            });
+            return false;
+
+            
+        });
+        
+        
+        $("#send_btn").click(function(){
+            var register_email = document.getElementById('register_email');
+            if (register_email.value=='') {
+                layer.msg("注册邮箱不能为空");
+                return false;
+            }
+            sendSms("SendEmailCode",register_email,1);
+            return false;
+        });
+        
+        
+        // 发送验证码
+        function sendSms(act, register_email){
+            $("#send_btn").text("发送...");
+            $("#send_btn").attr("disabled", true);//设置disabled属性
+            $("#send_btn").css('background','lightgray');
+
+            var register_email = document.getElementById('register_email');
+            var postData={
+                act:act,
+                register_email:register_email.value,
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/seller/login/sendEmail",
+                data: postData,
+                success: function (res) {
+                    if (res.code==0){
+                        layer.msg(res.msg,{icon:1,time:1000},function () {
+                            //alert("发送成功");
+                            var step = 59;
+                            $('#send_btn').text('重发60');
+                            var _res = setInterval(function()
+                            {
+                                //$("#send_btn").attr("disabled", true);//设置disabled属性
+                                $('#send_btn').text('重发'+step);
+                                step-=1;
+                                if(step <= 0){
+                                    
+                                    $('#send_btn').text('发送');
+                                    clearInterval(_res);//清除setInterval
+                                    $("#send_btn").removeAttr("disabled"); //移除disabled属性
+                                    $("#send_btn").css('background','linear-gradient(90deg, #FD9283 0%, #CA2E2F 100%)');
+
+                                }
+                            },1000);
+                            return false;
+                        })
+                    } else {
+                        layer.msg(res.msg,{icon:2,time:1000},function () {
+                            //alert("发送失败");
+                            $('#send_btn').text('发送');
+                            $("#send_btn").removeAttr("disabled"); //移除disabled属性
+                            $("#send_btn").css('background','linear-gradient(90deg, #FD9283 0%, #CA2E2F 100%)');
+                        })
+                    }
+                }
+            });
+            return false;
+            
+            
+        }
+        
+                
+        // 注册 dify
+        function regisertDify(name,register_email,ret_url) { 
+            var postData={
+                name:name,
+                email:register_email,
+            };
+            $.ajax({
+                type: "POST",
+                url: "/seller/ke_fu/addSellerToDify",
+                data: postData,
+                success: function (res) {
+                    if (res.code==0){
+                        console.log('注册成功');
+                        //layer.msg('注册成功');
+                    } else {
+                        // layer.msg(res.msg,{icon:2,time:1000},function () {
+                        //     initCode();
+                        // })
+                        console.log('注册失败，账户可能已存在');
+                    }
+                    location.href = ret_url;
+                }
+            });
+            return false;
+        }
+        
+    });
+</script>
+
+<script>
+
+    
+    // 登陆注册 界面切换
+    function login_register(types)
+    {
+        const login_title = document.getElementById("login_title");
+        const register_title = document.getElementById("register_title");
+        
+        const login_title_line = document.getElementById("login_title_line");
+        const register_title_line = document.getElementById("register_title_line");
+        
+        const login_title_form = document.getElementById("login_title_form");
+        const register_title_form = document.getElementById("register_title_form");
+        
+        if(types=="login")
+        {
+            //alert("点击登录按钮！");
+            login_title.className ="clickTrue";
+            register_title.className ="clickFalse";
+            
+            login_title_line.style.display = "block";
+            register_title_line.style.display = "none";
+            
+            login_title_form.style.display = "block";
+            register_title_form.style.display = "none";
+        }
+        
+        if(types=="register")
+        {
+            //alert("点击注册按钮！");
+            login_title.className ="clickFalse";
+            register_title.className ="clickTrue";
+            
+            login_title_line.style.display = "none";
+            register_title_line.style.display = "block";
+            
+            login_title_form.style.display = "none";
+            register_title_form.style.display = "block";
+        }
+    }
+    
+
+    // 点击忘记密码
+    function wangjimima()
+    {
+        layer.msg("忘记密码？请联系管理员");   
+    }
+
+    // 记住密码
+    function jizhumima()
+    {
+        const email = document.getElementById('email');
+        const password =document.getElementById('password');
+        const jizhumima_ = document.getElementById('jizhumima');
+
+        const saveEmail = localStorage.getItem('email');
+        const savePassword = localStorage.getItem('password');
+        const saveJizhumima = localStorage.getItem('jizhumima') === 'true';
+
+        if (saveEmail&&savePassword&&saveJizhumima) {
+            email.value = saveEmail;
+            password.value = savePassword;
+            jizhumima_.checked = true;
+        }
+    }
+    jizhumima();
+
+
+</script>
+
+</body>
+</html>

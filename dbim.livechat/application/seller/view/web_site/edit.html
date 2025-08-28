@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{:lang('编辑站点')}</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="__STATIC__/admin/style/admin.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <form class="layui-form" action="" lay-filter="component-form-element">
+                        <input type="hidden" name="web_id" value="{$website['web_id']}"/>
+                        <div class="layui-row layui-col-space10 layui-form-item">
+                            <div class="layui-col-lg6">
+                                <label class="layui-form-label">{:lang('应用名称：')}</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="web_name" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" value="{$website['web_name']}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space10 layui-form-item">
+                            <div class="layui-col-lg6">
+                                <label class="layui-form-label">{:lang('应用URL：')}</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="web_url" lay-verify="required|url" placeholder=""
+                                           autocomplete="off" class="layui-input" value="{$website['web_url']}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space10 layui-form-item">
+                            <div class="layui-col-lg6">
+                                <label class="layui-form-label">AppId(AI)：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="app_id" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" value="{$website['app_id']}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space10 layui-form-item">
+                            <div class="layui-col-lg6">
+                                <label class="layui-form-label">AppKey(AI)：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="app_key" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" value="{$website['app_key']}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="component-form-element">{:lang('立即提交')}</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">{:lang('重置')}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/admin/layui/layui.js"></script>
+<script src="__STATIC__/common/js/jquery.min.js"></script>
+<script>
+    layui.config({
+        base: '__STATIC__/admin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,form = layui.form;
+        layui.use(['form'], function() {
+            var form = layui.form;
+            // 自定义验证规则（如果需要）
+            form.verify({
+                url: function (value) {
+                    if (!/^https?:\/\/[^\s/$.?#].[^\s]*$/.test(value)) {
+                        return '请输入有效的URL地址';
+                    }
+                }
+            });
+        });
+        form.on('submit(component-form-element)', function(data){
+            $.post("{:url('web_site/editWebSite')}", data.field, function (res) {
+                if(0 == res.code) {
+                    layer.msg(res.msg);
+                    setTimeout(function () {
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        window.parent.renderTable();
+                    }, 200);
+                } else {
+                    layer.alert(res.msg, {
+                        'title': '{:lang('添加错误')}',
+                        'icon': 2
+                    });
+                }
+            }, 'json');
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
