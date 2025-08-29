@@ -260,11 +260,11 @@ chow -R www:www ./AiService
 
 <img src="README.assets/image-20250829144731622.png" alt="image-20250829144731622" style="zoom:80%;float:left;" />
 
-​	数据库配置文件地址：/config/const/const_dev.php
+​	11、数据库配置文件地址：/config/const/const_dev.php
 
 <img src="README.assets/image-20250829145128350.png" alt="image-20250829145128350" style="zoom:80%;float:left;" />
 
-​	11、启动 gatewayworker
+​	12、启动 gatewayworker
 
 ```
 # 启动 gatewayworker
@@ -284,7 +284,7 @@ php start.php retart -d
 php start.php stop
 ```
 
-​	12、LiveChat 项目配置
+​	13、LiveChat 项目配置
 
 ```
 # 配置完成后，站点入口：
@@ -294,7 +294,7 @@ php start.php stop
 # DBIM AI智能客服工作台：http://yourservice_IP:端口/service/login/index
 ```
 
-​	13、系统配置
+​	14、系统配置
 
 <img src="README.assets/image-20250829152418565.png" alt="image-20250829152418565" style="zoom:80%;" />
 
