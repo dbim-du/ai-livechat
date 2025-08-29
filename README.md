@@ -225,7 +225,6 @@ docker-compose build web
 # 注意要安装 php-7.2.33 的扩展，删除其他版本的php，否则 pgsql 驱动会报找不到 驱动：
 # 扩展-1：pgsql （需提前安装 postgresql 数据库）
 # 扩展-2：pdo-pgsql (需提前安装 postgresql)
-
 ```
 
 ​	7、文件部署
@@ -236,7 +235,6 @@ docker-compose build web
 # 文件 复制到 docker 容器名称为：dbim_dify_web 
 # 目录：app\web\public 目录下
 # 完成以上操作之后，需要重启 dbim_dify_web 容器，重启后 文件才能被加载生效
-
 ```
 
 ​	8、防火墙设置
@@ -281,13 +279,15 @@ php start.php start
 # 这几段是 debug 模式 其他命令：
 # debug执行
 php start.php start
+
 # 守护进程执行
 php start.php start -d
-# 重庆守护进程执行
+
+# 重启守护进程执行
 php start.php retart -d
+
 # 停止执行
 php start.php stop
-
 ```
 
 ​	12、LiveChat 项目配置
@@ -298,7 +298,6 @@ php start.php stop
 # DBIM AI智能客服系统（商家端）:http://yourservice_IP:端口/seller/login/index.html
 # 客服系统管理后台：http://yourservice_IP:端口/admin/login/index.html
 # DBIM AI智能客服工作台：http://yourservice_IP:端口/service/login/index
-
 ```
 
 ​	13、系统配置
