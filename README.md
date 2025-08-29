@@ -7,17 +7,9 @@ DBIM-AI 智能客服 结合 LiveChat 的实时沟通能力与 Dify 的 AI 处理
 
 使用内置积分 免费版可升级商业版，商业版无功能限制，后台可设置自定义升级所需积分消耗和版本说明。
 
-<img src="README.assets/image-20250829151731577.png" alt="image-20250829151731577" style="zoom: 33%; float: left;" /><img src="README.assets/image-20250829150649174.png" alt="image-20250829150649174" style="zoom: 33%; float: left;" />
+<img src="README.assets/image-20250829151623921.png" alt="image-20250829151623921" style="zoom: 50%; float: left;" />
 
-
-
-<img src="README.assets/image-20250829151623921.png" alt="image-20250829151623921" style="zoom: 50%; float: left;" /><img src="README.assets/image-20250829151352552.png" alt="image-20250829151352552" style="zoom: 50%; float: left;" />
-
-
-
-
-
-<img src="README.assets/image-20250829155256806.png" alt="image-20250829155256806" style="zoom:80%;" />
+![image-20250829155256806](README.assets/image-20250829155256806.png)
 
 ### 💬 全渠道支持台
 
