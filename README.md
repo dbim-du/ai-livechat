@@ -260,7 +260,7 @@ chow -R www:www ./AiService
 
 <img src="README.assets/image-20250829144731622.png" alt="image-20250829144731622" style="zoom:80%;float:left;" />
 
-<img src="README.assets/image-20250829144925258.png" alt="image-20250829144925258" style="zoom:80%;float:left" />
+​	数据库配置文件地址：/config/const/const_dev.php
 
 <img src="README.assets/image-20250829145128350.png" alt="image-20250829145128350" style="zoom:80%;float:left;" />
 
@@ -299,16 +299,6 @@ php start.php stop
 <img src="README.assets/image-20250829152418565.png" alt="image-20250829152418565" style="zoom:80%;" />
 
 <img src="README.assets/image-20250829152536709.png" alt="image-20250829152536709" style="zoom:80%;float:left;" />
-
-<img src="README.assets/image-20250829153258183.png" alt="image-20250829153258183" style="zoom:50%;" /><img src="README.assets/image-20250829153318153.png" alt="image-20250829153318153" style="zoom:50%;float:left;" />
-
-
-
-
-
-
-
-
 
 
 
