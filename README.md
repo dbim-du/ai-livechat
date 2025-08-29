@@ -293,7 +293,6 @@ php start.php stop
 ​	12、LiveChat 项目配置
 
 ```
-# 在堡塔 网站目录 - PHP项目 - 添加php站点，将livechat 创建为 php 站点
 # 配置完成后，站点入口：
 # 官网：http://yourservice_IP:端口/
 # DBIM AI智能客服系统（商家端）:http://yourservice_IP:端口/seller/login/index.html
