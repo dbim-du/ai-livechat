@@ -15,7 +15,9 @@ DBIM-AI 智能客服 结合 LiveChat 的实时沟通能力与 Dify 的 AI 处理
 
 
 
-<img src="README.assets/image-20250829152107684.png" alt="image-20250829152107684" style="zoom:80%;" />
+
+
+<img src="README.assets/image-20250829155256806.png" alt="image-20250829155256806" style="zoom:80%;" />
 
 ### 💬 全渠道支持台
 
