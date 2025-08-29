@@ -1,166 +1,164 @@
-# DBIM-AI 智能客服系统 (LiveChat + Dify) 
-## 🌟 系统概述
+<strong>Language: </strong>[English](README.md) | [简体中文](README_zh.md) 
+# DBIM-AI Intelligent Customer Service System (LiveChat + Dify)
+## 🌟 System Overview
 
-DBIM-AI 智能客服 结合 LiveChat 的实时沟通能力与 Dify 的 AI 处理引擎，构建了一个智能高效的客户服务解决方案。系统能够自动理解客户问题，处理常见查询并减轻客服工作量，确保客户获得即时准确的回答。并在必要时无缝转接人工客服。
+DBIM-AI Intelligent Customer Service combines the real-time communication capabilities of LiveChat with Dify's AI processing engine to create an intelligent and efficient customer service solution. The system automatically understands customer questions, handles common inquiries, and reduces customer service workload, ensuring customers receive immediate and accurate responses. It also seamlessly transfers calls to live agents when necessary.
 
-## 🧩 商业版/免费版
+## 🧩 Commercial/Free Version
 
-使用内置积分 免费版可升级商业版，商业版无功能限制，后台可设置自定义升级所需积分消耗和版本说明。
+The free version can be upgraded to the commercial version using built-in points. The commercial version has no functional restrictions, and the background can set the points consumption and version description required for the custom upgrade.
 
 <img src="README.assets/image-20250829151623921.png" alt="image-20250829151623921" style="zoom: 50%; float: left;" />
 
 ![image-20250829155256806](README.assets/image-20250829155256806.png)
 
-### 💬 全渠道支持台
+### 💬 Omnichannel Support Desk
 
-DBIM-AI 智能客服 将所有客户对话集中到一个强大的 Bot Server服务中，支持 用户自定义客服名称、头像、检索回复关键词等所有自定义属性。它支持在您的Web网站、wap移动端、APP移动端等多种方式引入客服聊天对话框、自定义聊天对话框、API服务调用等进行实时聊天。
+DBIM-AI Intelligent Customer Service centralizes all customer conversations into a powerful Bot Server service, supporting user-defined attributes such as customer service name, avatar, and search and reply keywords. It supports real-time chat via customer service chat dialogs, custom chat dialogs, and API service calls on your website, mobile WAP, and mobile app.
 
-### 📚 接入中心指南
+### 📚 Access Center Guide
 
-通过系统提供的 接入指南 文档，指导用户在不同使用场景 轻松接入DBIM-AI智能客服，让客服在不同使用场景，更便捷的得到智能客服的咨询帮助服务。
+The access guide document provided by the system guides users to easily access DBIM-AI intelligent customer service in different usage scenarios, allowing customer service staff to obtain consulting and assistance services from intelligent customer service more conveniently in different usage scenarios.
 
-## 📋 核心功能与技术架构
+## 📋 Core functions and technical architecture
 
-| 功能模块             | 功能描述                                                     | 依赖组件        |
-| -------------------- | ------------------------------------------------------------ | --------------- |
-| 实时聊天交互         | 支持文字、图片、文件传输，客户无需下载 APP 即可通过网页 / API发起咨询 | LiveChat        |
-| AI 智能应答          | 基于 企业知识库+联网搜索 自动回答常见问题，支持多轮对话      | Dify + 知识库   |
-| 转接人工客服无缝衔接 | AI客服 无法获取到精准解答时，用户可选择转接人工客服，人工客服将为用户提供更好的服务和精准的回答 | LiveChat + Dify |
-| 客户意图识别         | 自动识别客户咨询意图（如 “产品详细”，“使用说明书”等），AI 客服 自动检索知识库 + 联网搜索 + LLM 组织解答话术 | Dify + LLM      |
-| 多渠道统一管理       | 整合网页、APP、WAP等渠道咨询，统一在 LiveChat 后台处理       | LiveChat        |
-| 数据分析与报表       | 输出咨询量、AI 解决率、客户满意度等数据报表，支持周 / 月维度导出 | Dify 数据分析   |
+| Functional modules                           | Functional Description                                       | Dependent components    |
+| -------------------------------------------- | ------------------------------------------------------------ | ----------------------- |
+| Real-time chat interaction                   | Supports text, image, and file transfer. Customers can initiate consultations through the webpage/API without downloading the APP. | Live Chat               |
+| AI intelligent response                      | Automatically answer frequently asked questions based on enterprise knowledge base + online search, supporting multiple rounds of dialogue | Dify + Knowledge Base   |
+| Seamless transfer to manual customer service | When AI customer service cannot provide accurate answers, users can choose to transfer to human customer service, who will provide better service and accurate answers. | LiveChat + Dify         |
+| Customer intent identification               | Automatically identify customer inquiry intent (such as "product details", "instructions for use", etc.), and AI customer service automatically searches the knowledge base + online search + LLM organizes the answer words | Bachelor's degree + LLM |
+| Multi-channel unified management             | Integrate consultations from web pages, APPs, WAP and other channels, and process them uniformly in the LiveChat backend | Live Chat               |
+| Data analysis and reporting                  | Output data reports such as consultation volume, AI resolution rate, and customer satisfaction, supporting weekly/monthly export | Dify Data Analysis      |
 
-## 🛠 安装部署
+## 🛠 Installation and Deployment
 
-前置要求：
+Prerequisites:
 
-​	1、docker 容器
+1. Docker container
+2. PostgreSQL database
+3. MySQL database
+4. Fortress (easy to manage, deploy and install)
+5. PHP-7.2.33 and PHP extensions: 1. pgsql, 2. pdo_pgsql
 
-​	2、postgresql 数据库
+Deployment steps:
 
-​	3、mysql 数据库
+1. Install PostgreSQL and uuid-ossp components
 
-​	4、堡塔（便于管理、部署及环境安装）
-
-​	5、php-7.2.33 及 php扩展：1、pgsql，2、pdo_pgsql 
-
-部署步骤：
-
-​	1、安装 PostgreSQL 及 uuid-ossp 组件
-
-		# 1、安装 psql:
-		# 更新安装包列表	
+		# 1. Install psql
+		# Update the installation package list
 		sudo apt update
 		
-		# 安装 PostgreSQL 及 附加组件库（包含 uuid-ossp）
+		# Install PostgreSQL and add-on libraries (including uuid-ossp)
 		sudo apt install postgresql postgresql-contrib postgresql-client
 		
-		# 检查服务状态
+		# Check the service status
 		sudo systemctl status postgresql
 		
-		# 查看postgresql版本
+		# View postgresql version
 		sudo -u postgres psql -c "SELECT version();"
 		
-		# 列出所有可用扩展
+		# List all available extensions
 		sudo -u postgres psql -c "SELECT * FROM pg_available_extensions WHERE name='uuid-ossp';"
 		
-		# 2、启动并检查服务状态：
-		# 启动服务
+		# 2. Start and check the service status
+		# Start Service
 		sudo systemctl start postgresql
 		
-		# 设置开机启动
+		# Set up startup
 		sudo systemctl enable postgresql
 		
-		# 检查状态
+		# Check Status
 		sudo systemctl status postgresql
 		
-		# 3、安装 uuid-ossp 扩展：
-		# 切换到 postgres 用户
+		# 3. Install uuid-ossp extension:
+		# Switch to postgres users
 		sudo -i -u postgres
 		
-		# 进入 PostgreSQL 交互终端
+		# Enter the PostgreSQL interactive Terminal
 		psql
 		
-		# 4、测试调用 uuid-ossp 扩展组件：
-		# 创建扩展
+		# 4. Test the invocation of the uuid-ossp extension component
+		# Create Extensions
 		CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 		
-		# 验证安装，测试生成UUID
+		# Verify installation and test to generate UUID
 		SELECT uuid_generate_v4();
 		
-		# 5、如何设置 PostgreSQL 初始密码
-		# 修改 postgres 用户密码
-		ALTER USER postgres WITH PASSWORD '你的密码';
+		# 5. How to Set the initial Password for PostgreSQL
+		# Change the postgres user password
+		ALTER USER postgres WITH PASSWORD 'Your password ';
 		
-		# 然后编辑配置文件 /etc/postgresql/[pgsql版本号]/main/pg_hba.conf，将认证方式改为 md5
-		# 将 local 行的 peer 改为 md5
+		Then edit the configuration file /etc/postgresql/[pgsql version number]/main/pg_hba.conf and change the authentication method to md5
+		# Change the "peer" of the local row to md5
 		local  all  postgres    md5
 		
-		# 6、开启 PostgreSQL 远程连接
-		# 打开 /etc/postgresql/[pgsql版本号]/main/postgresql.conf
-		# 将 listen_addresses = 'localhost' 
-		# 修改为 
-		# listen_addresses = '*' # 允许所有IP连接 或 指定 IP连接
+		# 6. Enable PostgreSQL remote connection
+		# Open /etc/postgresql/[pgsql version number]/main/postgresql.conf
+		# Set listen_addresses to 'localhost'
+		# Modify to
+		# listen_addresses = '*' # allows all IP connections or specified IP connections
 		
-		# 7、修改客户端认证配置
-		# 打开 /etc/postgresql/[pgsql版本号]/main/pg_hba.conf
-		# 在文件末尾添加：
-		host  all  all  0.0.0.0/0  md5
+		# 7. Modify the client authentication configuration
+		# Open /etc/postgresql/[pgsql version number]/main/pg_hba.conf
+		# Add at the end of the file:
+		host all all 0.0.0.0/0 md5
 		
-		# 8、重启服务生效
+		# 8. The restart service takes effect
 		sudo systemctl restart postgresql
-		
+	
 
-​	2、安装 Dify
+​	2、Install Dify
 
-	# 进入 Dify 源码的 Docker 目录
+	# Enter the Docker directory of the Dify source code
 	cd dify/docker
-	
-	# 赋值环境配置文件
+		
+	# Assign the environment configuration file
 	cp .env.example .env
-	
-	# 启动 Docker 容器
-		# 如果版本是 Docker Compose V2，使用以下命令：
-		sudo docker compose up -d 
 		
-		# 如果版本是 docker Compose V1，使用以下命令：
-		sudo docker-compose up -d 
+	# Start the Docker container
+		# If the version is Docker Compose V2, use the following command:
+		sudo docker compose up -d
 		
-		# 运行命令后，你会看到类似以下的输出，显示所有容器的状态和端口映射：
-	  	✔ Network docker_ssrf_proxy_network  Created     0.0s 
-	  	✔ Container dbim_dify_plugin_daemon  Started     0.5s 
-	  	✔ Container dbim_dify_web            Started     0.4s 
-	  	✔ Container dbim_dify_ssrf_proxy     Started     0.4s 
-	  	⠼ Container dbim_dify_redis          Starting    0.5s 
-	  	✔ Container dbim_dify_weaviate       Started     0.4s 
-	  	✔ Container dbim_dify_sandbox        Started     0.4s 
-	  	✔ Container dbim_dify_worker         Created     0.0s 
-	  	✔ Container dbim_dify_API            Created     0.0s 
-	  	✔ Container dbim_dify_nginx          Created     0.0s 
-	  	
-	 
-	# 最后检查是否所有容器都正常运行：
-	docker compose ps
-	
+		# If the version is docker Compose V1, use the following command:
+		sudo docker-compose up -d
+		
+		After running the command, you will see an output similar to the following, showing the status and port mapping of all containers:
+		✔ Network docker_ssrf_proxy_network Created 0.0s
+		✔ Container dbim_dify_plugin_daemon Started 0.5s
+		✔ Container dbim_dify_web Started 0.4s
+		✔ Container dbim_dify_ssrf_proxy Started 0.4s
+		⠼ Container dbim_dify_redis Starting 0.5s
+		✔ Container dbim_dify_weaviate Started 0.4s
+		✔ Container dbim_dify_sandbox Started 0.4s
+		✔ Container dbim_dify_worker Created 0.0s
+		✔ Container dbim_dify_API Created 0.0s
+		✔ Container dbim_dify_nginx Created 0.0s
 
-​	3、访问dify
+
+​		
+​	# Finally, check if all containers are operating normally:
+​	docker compose ps
+
+
+​	3、Visit dify
 
 ```
-	# 你可以先前往管理初始化设置页面，设置管理员账户：
-	# 此管理员账户拥有 dify 系统所有最高权限功能
+	# You can first go to the Management Initialization Settings page to set up an administrator account:
+	This administrator account has all the highest privileges and functions of the dify system
 	
-	# 本地环境访问地址：
+	# Local environment access address:
 	http://localhost/install
 	
-	# 服务器环境访问地址：
+	# Server environment access address:
 	http://your_server_ip/install
 	
 ```
 
-​	4、Docker 镜像拉取不成功：
+​	4、Docker image pull failed:
 
 ```
-# 由于网络原因，docker镜像拉去不成功的概率比较大，这里就不做过多解释，直接在系统配置以下镜像源，拉取镜像成功的概率比较大，镜像源如下：
+# Due to network issues, the probability of unsuccessful image pulling from docker is relatively high. Therefore, no further explanation will be provided here. Directly configure the following image sources in the system, and the probability of successful image pulling is relatively high. The image sources are as follows:
 
 "https://docker.1ms.run",
 "https://hub.rat.dev",
@@ -185,69 +183,69 @@ DBIM-AI 智能客服 将所有客户对话集中到一个强大的 Bot Server服
 "https://docker-cf.registry.cyou"
 ```
 
-​	5、系统常用配置命令
+​	5、Common system configuration commands
 
 ```
-# 系统常用配置命令：
+# Common System Configuration Commands:
 
-# 重载配置
-sudo systemctl daemon-reload  
+# Overload Configuration
+sudo systemctl daemon-reload
 
-# 重启服务 
-sudo systemctl restart docker 
+# Restart Service
+sudo systemctl restart docker
 
-# 移除旧的 docker 配置（移除所有 docker 镜像）
-docker-compose down 
+# Remove old docker configurations (Remove all docker images)
+docker-compose down
 
-# 启动所有 dify 配置的镜像
-docker-compose up -d 
+# Start all dify configuration images
+docker-compose up -d
 
-# 停止但不删除
-docker-compose stop <service_name>  
+# Stop but not delete
+docker-compose stop <service_name>
 
-# 删除已停止的容器
-docker-compose rm <service_name>    
+# Delete stopped containers
+docker-compose rm <service_name>
 
-# 重新构建 web 项目
-docker-compose build web 
-
-```
-
-​	6、安装 php-7.2.33 及 相关扩展
-
-```
-# 注意要安装 php-7.2.33 的扩展，删除其他版本的php，否则 pgsql 驱动会报找不到 驱动：
-# 扩展-1：pgsql （需提前安装 postgresql 数据库）
-# 扩展-2：pdo-pgsql (需提前安装 postgresql)
-```
-
-​	7、文件部署
-
-```
-# 部署完成 Dify 之后，将 livechat 项目中的： 
-# dbim.livechat\application\seller\view\index\difylogin.html 
-# 文件 复制到 docker 容器名称为：dbim_dify_web 
-# 目录：app\web\public 目录下
-# 完成以上操作之后，需要重启 dbim_dify_web 容器，重启后 文件才能被加载生效
-```
-
-​	8、防火墙设置
-
-```
-# 堡塔防火墙 配置 开放 5432 或 当前堡塔 pgsql 数据库使用的端口
+# Rebuild the web project
+docker-compose build web
 
 ```
 
-​	9、LiveChat 项目搭建
+​	6、Install php-7.2.33 and related extensions
 
 ```
-# 把源码上传，放到/www/wwwroot 目录下
-# 建议您 通过命令：
+# Note to install the PHP-7.2.33 extension and delete other versions of php; otherwise, the pgsql driver will report that the driver cannot be found:
+# Extension -1: pgsql (postgresql database installation Required in advance)
+# Extension -2: pdo-pgsql (postgresql Installation Required in advance)
+```
+
+​	7、File deployment
+
+```
+# After the Dify deployment is completed, the livechat project will include:
+# dbim.livechat\application\seller\view\index\difylogin.html
+# The name of the docker container copied to the file is: dbim_dify_web
+# Directory: Under the app\web\public directory
+# After completing the above operations, you need to restart the dbim_dify_web container. Only after the restart can the file be loaded and take effect
+```
+
+​	8、Firewall settings
+
+```
+# Configure the Bota firewall to open port 5432 or the port currently used by the Bota pgsql database
+```
+
+​	9、LiveChat project construction
+
+```
+# Upload the source code to /www/wwwroot
+# It is recommended that you use the command:
 chow -R www:www ./AiService
-# --设置文件的 所属以及分组为 WWW，以避免权限问题。
+# -- Set the file's ownership and group to WWW to avoid permission issues.
 
-# 添加网站
-# 在堡塔 网站目录 - PHP项目 - 添加php站点，将livechat 创建为 php 站点
+# Add Website
+# In the Bota website directory - PHP Project - Add php Site, create livechat as a php site
+
 ```
 
 <img src="README.assets/image-20250829135458454.png" alt="image-20250829135458454" style="zoom: 67%;float:left;" />
@@ -256,45 +254,45 @@ chow -R www:www ./AiService
 
 <img src="README.assets/image-20250829140358633.png" alt="image-20250829140358633" style="zoom:80%;float:left;" />
 
-​	10、数据库配置
+​	10、Database Configuration
 
 <img src="README.assets/image-20250829144731622.png" alt="image-20250829144731622" style="zoom:80%;float:left;" />
 
-​	11、数据库配置文件地址：/config/const/const_dev.php
+​	11、Database configuration file address: /config/const/const_dev.php
 
 <img src="README.assets/image-20250829145128350.png" alt="image-20250829145128350" style="zoom:80%;float:left;" />
 
-​	12、启动 gatewayworker
+​	12、Start gatewayworker
 
 ```
-# 启动 gatewayworker
+# Start gatewayworker
 php start.php start
 
-# 这几段是 debug 模式 其他命令：
-# debug执行
+# These are other commands in debug mode:
+# debug Execution
 php start.php start
 
-# 守护进程执行
+# Daemon execution
 php start.php start -d
 
-# 重启守护进程执行
+# Restart the daemon process execution
 php start.php retart -d
 
-# 停止执行
+# Stop Execution
 php start.php stop
 ```
 
-​	13、LiveChat 项目配置
+​	13、LiveChat Project Configuration
 
 ```
-# 配置完成后，站点入口：
-# 官网：http://yourservice_IP:端口/
-# DBIM AI智能客服系统（商家端）:http://yourservice_IP:端口/seller/login/index.html
-# 客服系统管理后台：http://yourservice_IP:端口/admin/login/index.html
-# DBIM AI智能客服工作台：http://yourservice_IP:端口/service/login/index
+# After configuration is completed, the site entry
+# Official website: http://yourservice_IP: port /
+# DBIM AI Intelligent Customer Service System (Merchant end) :http://yourservice_IP: port /seller/login/index.html
+# Customer service system management backend: http://yourservice_IP: port /admin/login/index.html
+# DBIM AI Intelligent Customer service Workbench: http://yourservice_IP: port /service/login/index
 ```
 
-​	14、系统配置
+​	14、System Configuration
 
 <img src="README.assets/image-20250829152418565.png" alt="image-20250829152418565" style="zoom:80%;" />
 
